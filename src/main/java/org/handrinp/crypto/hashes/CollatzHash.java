@@ -10,7 +10,7 @@ public class CollatzHash implements SingleKey, Hash {
 	private BigInteger key;
 
 	public CollatzHash() {
-		this.key = BigInteger.probablePrime(256, new Random());
+		setKey(BigInteger.probablePrime(256, new Random()));
 	}
 
 	public CollatzHash(byte[] key) {

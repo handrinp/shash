@@ -2,20 +2,26 @@ package org.handrinp.crypto.hashes;
 
 import static org.junit.Assert.assertEquals;
 
-import org.handrinp.crypto.StringUtils;
+import java.util.Random;
+
 import org.junit.Test;
 
 public class CollatzHashTest {
 	@Test
 	public void testHash() {
+		Random rand = new Random();
 		CollatzHash ch = new CollatzHash();
-		String message = "This is a good test message... wish it luck!";
-		byte[] unhashed = StringUtils.fromString(message);
-		byte[] hashed = ch.hash(unhashed);
-		byte[] rehashed = ch.hash(hashed);
+		byte[] original = new byte[256];
+		byte[] twiceHashed;
 
-		for (int i = 0; i < unhashed.length; ++i) {
-			assertEquals(unhashed[i], rehashed[i]);
+		for (int test = 0; test < 50; ++test) {
+			ch = new CollatzHash();
+			rand.nextBytes(original);
+			twiceHashed = ch.hash(ch.hash(original));
+
+			for (int i = 0; i < original.length; ++i) {
+				assertEquals(original[i], twiceHashed[i]);
+			}
 		}
 	}
 }
