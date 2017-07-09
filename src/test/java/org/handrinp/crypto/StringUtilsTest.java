@@ -11,14 +11,14 @@ public class StringUtilsTest {
 	public void testFromBytes() {
 		byte[] bytes = new byte[] { (byte) 72, (byte) 101, (byte) 108, (byte) 108, (byte) 111, };
 
-		assertEquals("Hello", StringUtils.fromBytes(bytes));
+		assertEquals("Hello", StringUtils.bytesToString(bytes));
 	}
 
 	@Test
 	public void testFromString() {
 		byte[] bytes = new byte[] { (byte) 72, (byte) 101, (byte) 108, (byte) 108, (byte) 111, };
 
-		byte[] testBytes = StringUtils.fromString("Hello");
+		byte[] testBytes = StringUtils.stringToBytes("Hello");
 
 		for (int i = 0; i < bytes.length; ++i) {
 			assertEquals(bytes[i], testBytes[i]);
@@ -28,6 +28,6 @@ public class StringUtilsTest {
 	@Test
 	public void testBothWays() {
 		String start = "This is a starting <code>String</code>!!! - wish me luck :)";
-		assertEquals(start, StringUtils.fromBytes(StringUtils.fromString(start)));
+		assertEquals(start, StringUtils.bytesToString(StringUtils.stringToBytes(start)));
 	}
 }

@@ -5,11 +5,11 @@ import java.nio.charset.Charset;
 public class StringUtils {
 	public static final Charset CHARSET = Charset.defaultCharset();
 
-	public static String fromBytes(byte[] bytes) {
+	public static String bytesToString(byte[] bytes) {
 		return new String(bytes, CHARSET);
 	}
 
-	public static byte[] fromString(String string) {
+	public static byte[] stringToBytes(String string) {
 		return string.getBytes(CHARSET);
 	}
 }

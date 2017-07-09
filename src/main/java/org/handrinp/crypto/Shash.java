@@ -16,8 +16,8 @@ public class Shash {
 	}
 
 	public String hash(String input) {
-		byte[] hashable = StringUtils.fromString(input);
+		byte[] hashable = StringUtils.stringToBytes(input);
 		byte[] hashed = hash.hash(hashable);
-		return StringUtils.fromBytes(hashed);
+		return StringUtils.bytesToString(hashed);
 	}
 }
